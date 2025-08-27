@@ -6,6 +6,10 @@ import { isAxiosError } from 'axios';
 import { logErrorResponse } from '../../_utils/utils';
 
 export async function POST(req: NextRequest) {
+  const response = NextResponse.next();
+  response.headers.set('Access-Control-Allow-Origin', 'https://09-auth-ten-theta.vercel.app'); 
+  response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS'); 
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
   try {
     const body = await req.json();
 

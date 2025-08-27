@@ -76,3 +76,13 @@ export const updateMe = async (data: UpdateUserRequest) => {
   });
   return res.data;
 };
+
+export const fetchNoteById = async (id: string): Promise<Note> => {
+  const cookieStore = await cookies();
+  const res = await nextServer.get<Note>(`/notes/${id}`, {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return res.data;
+};

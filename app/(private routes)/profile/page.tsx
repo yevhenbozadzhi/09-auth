@@ -24,7 +24,7 @@ const ProfilePage = async () => {
       
      <div className={css.avatarWrapper}>
       <Image
-        src="/public/globe.svg"
+              src={user.avatar}
         alt="User Avatar"
         width={120}
         height={120}
@@ -39,7 +39,7 @@ const ProfilePage = async () => {
           <div>
             
       <p>
-        Username: {user.userName}
+        Username: {user.username}
       </p>
       <p>
         Email: {user.email}

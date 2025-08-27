@@ -4,6 +4,7 @@ import css from "../app/footer.module.css";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 
 const roboto = Roboto({
@@ -38,7 +39,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable}`}>
+       
         <TanStackProvider>
+          <AuthProvider>
           <Header />
           <main>
             {children}
@@ -49,8 +52,10 @@ export default function RootLayout({
             <p className={css.createdTime}>
               Created <time dateTime="2025">2025</time>
             </p>
-          </footer>
+            </footer>
+            </AuthProvider>
         </TanStackProvider>
+        
       </body>
     </html>
   );

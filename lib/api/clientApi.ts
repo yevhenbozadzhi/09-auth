@@ -72,11 +72,13 @@ export const register = async (data: RegisterRequest) => {
 
 
 export type UpdateUserRequest = {
-  userName?: string;
-  photoUrl?: string;
+  username?: string;
+  email?: string;
+  formData?: FormData,
 };
 
 export const updateMe = async (data: UpdateUserRequest) => {
+  
   const res = await nextServer.patch<User>('/users/me', data);
   return res.data;
 };
@@ -96,3 +98,17 @@ export const fetchNoteById = async (id: string): Promise<Note> => {
   });
   return res.data;
 };
+
+export const getMe = async (): Promise<User> => {
+  const { data } = await nextServer.get('/users/me');
+  return data;
+};
+
+type CheckSessionProps = {
+  success: boolean,
+}
+
+export const checkSession = async () => {
+  const res = await nextServer.get<CheckSessionProps>('/auth/session');
+  return res.data.success;
+}

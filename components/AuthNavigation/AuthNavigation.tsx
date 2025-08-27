@@ -1,15 +1,21 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './AuthNavigation.module.css'
 import Link from 'next/link';
-import { logout } from '@/lib/api/clientApi';
+import { getMe, logout } from '@/lib/api/clientApi';
 import { useAuthStore } from '@/lib/store/authStore';
 import { useRouter } from 'next/navigation';
+import { User } from '@/types/user';
 
  
 
 
 const AuthNavigation = () => {
+  const [user, setUser] = useState<User | null>(null);
+    useEffect(() => {
+      getMe().then(user => { setUser(user) });
+    }, []);
+  
   const router = useRouter();
 const { isAuthenticated } = useAuthStore();
   const clearIsAuthenticated = useAuthStore(
@@ -21,7 +27,7 @@ const { isAuthenticated } = useAuthStore();
     clearIsAuthenticated();
     router.push("/sign-in");
     
-  }
+  } 
 
   return isAuthenticated ? (
     <>
@@ -32,7 +38,7 @@ const { isAuthenticated } = useAuthStore();
       </li>
 
       <li className={css.navigationItem}>
-        <p className={css.userEmail}>Email</p>
+        <p className={css.userEmail}>{user?.email}</p>
         <button onClick={handleLogout} className={css.logoutButton}>
           Logout
         </button>

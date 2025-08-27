@@ -30,8 +30,14 @@ const ProfilePage = async () => {
         height={120}
         className={css.avatar}
       />
-    </div>
-    <div>
+          </div>
+              <div className={css.header}>
+	      <Link href="/profile/edit" className={css.editProfileButton}>
+	       Edit Profile
+	     </Link>
+	   </div>
+          <div>
+            
       <p>
         Username: {user.userName}
       </p>
@@ -40,11 +46,7 @@ const ProfilePage = async () => {
       </p>
     </div>
     </div>
-    <div className={css.header}>
-	      <Link href="/profile/edit" className={css.editProfileButton}>
-	       Edit Profile
-	     </Link>
-	   </div>
+
 </main>
 
     </div>

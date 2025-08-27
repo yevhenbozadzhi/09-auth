@@ -37,7 +37,7 @@ export default function NotesClient({ tagId }: NotesClientProps) {
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
-         <Link href={"/notes/action/create"} className={css.submitButton}>Create Note</Link>
+         <Link href={"/notes/action/create"} className={css.submitButton}>Create Note + </Link>
         <SearchBox value={searchTerm} onChange={setSearchTerm} />
       </header>
 

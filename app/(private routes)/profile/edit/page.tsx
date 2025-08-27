@@ -12,7 +12,7 @@ const EditProfile = () => {
   const [userName, setUserName] = useState('');
   const router = useRouter();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLButtonElement>) => {
     setUserName(event.target.value);
   };
 
@@ -45,7 +45,7 @@ const EditProfile = () => {
       <p>Email: email</p>
 
       <div className={css.actions}>
-        <button type="submit" className={css.saveButton}>
+        <button type="submit" className={css.saveButton} onChange={handleChange}>
           Save
         </button>
         <button onClick={() => router.push('/profile')} type="button" className={css.cancelButton}>

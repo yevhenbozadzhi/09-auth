@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import css from "../../css/NoteForm.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { NewNoteData } from "@/types/note";
-import {addNote} from '@/lib/api/clientApi'
+import { addNote } from '@/lib/api/clientApi';
 import { useRouter } from "next/navigation";
 import { create } from 'zustand'
 import { useNoteDraftStore } from "@/lib/store/noteStore";
@@ -129,7 +129,7 @@ export default function NoteForm() {
           type="submit"
           className={css.submitButton}
         >
-          Create note
+          Create note +
         </button>
       </div>
     </form>

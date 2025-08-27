@@ -77,14 +77,16 @@ export type UpdateUserRequest = {
 };
 
 export const updateMe = async (data: UpdateUserRequest) => {
-  const res = await nextServer.put<User>('/users/me', data);
+  const res = await nextServer.patch<User>('/users/me', data);
   return res.data;
 };
 
 
 export const logout = async (): Promise<void> => {
   await nextServer.post("/auth/logout")
-}
+};
+
+
 export const fetchNoteById = async (id: string): Promise<Note> => {
   // const cookieStore = await cookies();
   const res = await nextServer.get<Note>(`/notes/${id}`, {

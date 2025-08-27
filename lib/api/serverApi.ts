@@ -2,6 +2,7 @@ import { Note } from "@/types/note";
 import {  nextServer } from "./api";
 import { cookies } from 'next/headers';
 import { User } from "@/types/user";
+import { UpdateUserRequest } from "./clientApi";
 
 
 export type  AxiosErrorResponse = {
@@ -65,4 +66,13 @@ export const getServerMe = async (): Promise<User> => {
     },
   });
   return data;
+};
+export const updateMe = async (data: UpdateUserRequest) => {
+  const cookieStore = await cookies();
+  const res = await nextServer.put<User>('/users/me', data, {
+    headers: {
+      Cookie: cookieStore.toString(),
+    }
+  });
+  return res.data;
 };
